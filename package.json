@@ -41,6 +41,7 @@
     "markdown-it-katex": "^2.0.3",
     "markdown-it-mark": "^3.0.0",
     "markdown-it-sanitizer": "^0.4.3",
+    "minimist": "^1.2.5",
     "nuxt": "^2.0.0",
     "nuxt-property-decorator": "^2.5.1",
     "nuxt-webfontloader": "^1.1.0",
