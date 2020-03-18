@@ -42,12 +42,17 @@
           {{ notification.created_at }}
         </v-card-subtitle>
       </v-card>
+      <v-pagination
+        v-model="page"
+        :length="numPage"
+        @input="onPageChange"
+      />
     </v-container>
   </transition>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { db } from '@/plugins/firebase'
 import { authStore } from '@/store'
 import dateFormatter from '@/utils/date-formatter'
@@ -74,10 +79,16 @@ interface Notification {
 class Index extends Vue {
   allNotifications: any[] = []
   page = 1
-  numPerPage = 5
+  numPerPage = 10
   numPage = 0
   notifications: Notification[] = []
   texts: string[] = []
+
+  head () {
+    return {
+      title: '通知'
+    }
+  }
 
   async created () {
     if (process.server) { return }

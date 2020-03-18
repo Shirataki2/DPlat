@@ -171,7 +171,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'nuxt-property-decorator'
 import firebase from 'firebase'
 import { authStore } from '../../store'
 import { Competition } from '@/pages/competitions/index.vue'
@@ -206,6 +206,12 @@ class Index extends Vue {
   @Watch('file', { immediate: true, deep: true })
   onFileSelect () {
     this.disableSubmit = !this.file
+  }
+
+  head () {
+    return {
+      title: this.competition ? this.competition.name : 'コンテスト'
+    }
   }
 
   async mounted () {

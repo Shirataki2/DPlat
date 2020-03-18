@@ -499,7 +499,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'nuxt-property-decorator'
 import { db, storage } from '@/plugins/firebase'
 import { authStore } from '@/store'
 import dateFormatter, { toDifDate } from '@/utils/date-formatter'
@@ -597,6 +597,12 @@ class Index extends Vue {
 
   rooms: Room[] = []
   competitions: any[] = []
+
+  head () {
+    return {
+      title: this.user ? this.user.displayName : 'ユーザーページ'
+    }
+  }
 
   async validate () {
     if (!authStore.user) { return }

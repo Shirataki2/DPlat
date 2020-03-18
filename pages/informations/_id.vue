@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { db } from '@/plugins/firebase'
 import dateFormatter from '@/utils/date-formatter'
 
@@ -47,6 +47,12 @@ class Index extends Vue {
   text = ''
   name = ''
   createdAt = ''
+
+  head () {
+    return {
+      title: this.name
+    }
+  }
 
   async mounted () {
     const infoSnap = await db.collection('informations').doc(this.$route.params.id).get()

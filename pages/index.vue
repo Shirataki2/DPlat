@@ -142,9 +142,10 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { db } from '@/plugins/firebase'
 import dateFormatter from '@/utils/date-formatter'
+import siteConfig from '@/config/site.config'
 
 @Component({
   layout: 'protected',
@@ -157,6 +158,13 @@ class Index extends Vue {
   informations: any[] = []
   chatrooms: any[] = []
   competitions: any[] = []
+
+  head () {
+    return {
+      title: siteConfig.sitename,
+      titleTemplate: null
+    }
+  }
 
   async mounted () {
     const [infoSnaps, chatSnaps, compSnaps] = await Promise.all([

@@ -121,7 +121,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { db, store } from '@/plugins/firebase'
 import { authStore } from '@/store'
 
@@ -141,6 +141,12 @@ class Index extends Vue {
   text: string = ''
   alertText: string = ''
   successText: string = ''
+
+  head () {
+    return {
+      title: 'スレッドの作成'
+    }
+  }
 
   async submit () {
     const form: any = this.$refs.form

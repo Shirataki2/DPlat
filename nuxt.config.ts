@@ -1,58 +1,50 @@
 import { Configuration } from '@nuxt/types'
+import SiteConfig from './config/site.config'
 require('dotenv').config()
 
 const config: Configuration = {
   mode: 'universal',
   buildDir: '.nuxt',
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - ' + SiteConfig.sitename,
+    title: SiteConfig.sitename,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: SiteConfig.desciption }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'icon',
+        type: 'image/x-icon',
+        href: '/favicon.ico'
+      },
       {
         rel: 'stylesheet',
         href: 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css'
       },
-      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css' }
+      {
+        rel: 'stylesheet',
+        href: 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/default.min.css'
+      }
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
+  loading: { color: '#67aef8' },
   css: [
-    'firebaseui/dist/firebaseui.css',
     '~/assets/style.css',
     '~/assets/md.css',
     '~/assets/github.css'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
     '~/plugins/firebase',
     '~/plugins/cookie-storage'
   ],
-  /*
-  ** Nuxt.js dev-modules
-  */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build'
   ],
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
@@ -68,10 +60,6 @@ const config: Configuration = {
       families: ['Oxanium:300&display=swap']
     }
   },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
   axios: {
   },
   proxy: {
@@ -82,10 +70,6 @@ const config: Configuration = {
       }
     }
   },
-  /*
-  ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
-  */
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     treeShake: true
@@ -125,6 +109,15 @@ const config: Configuration = {
     /*
     ** You can extend webpack config here
     */
+  },
+  pwa: {
+    meta: {
+      name: SiteConfig.sitename,
+      auther: SiteConfig.auther,
+      description: SiteConfig.desciption,
+      lang: SiteConfig.lang,
+      ogHost: SiteConfig.ogHost
+    }
   }
 }
 

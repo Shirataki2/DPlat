@@ -193,7 +193,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import twemoji from 'twemoji'
 import { db } from '@/plugins/firebase'
 import { authStore } from '@/store'

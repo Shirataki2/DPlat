@@ -45,7 +45,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { db } from '@/plugins/firebase'
 import dateFormatter from '@/utils/date-formatter'
 
@@ -62,6 +62,12 @@ class Index extends Vue {
   page = 1
   numPerPage = 5
   numPage = 0
+
+  head () {
+    return {
+      title: 'お知らせ'
+    }
+  }
 
   async mounted () {
     const infoSnaps = await db.collection('informations').orderBy('created_at', 'desc').get()

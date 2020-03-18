@@ -25,7 +25,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { authStore } from '../store'
 import { providers } from '@/plugins/firebase'
 
@@ -38,6 +38,12 @@ class Login extends Vue {
   password = 'fgjiutx530'
   alertText = ''
   passwordInvisibility = true
+
+  head () {
+    return {
+      title: 'ログイン'
+    }
+  }
 
   async login () {
     try {

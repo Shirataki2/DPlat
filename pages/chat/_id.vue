@@ -104,7 +104,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import firebase from 'firebase'
 import { db, store } from '@/plugins/firebase'
 import formatDate from '@/utils/date-formatter'
@@ -136,6 +136,12 @@ class Index extends Vue {
   createdAt = ''
   infotext = ''
   snackbar = false
+
+  head () {
+    return {
+      title: this.$route.params.id
+    }
+  }
 
   async mounted () {
     const [doc, snaps] = await Promise.all([

@@ -43,7 +43,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { db } from '../../plugins/firebase'
 import dateFormatter from '../../utils/date-formatter'
 
@@ -71,6 +71,12 @@ export interface Competition {
 class Index extends Vue {
   competitions: Competition[] = []
   alertText: string = ''
+
+  head () {
+    return {
+      title: 'コンテスト'
+    }
+  }
 
   async mounted () {
     const snapComp = await db.collection('competitions').orderBy('created_at', 'desc').get()
