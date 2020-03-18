@@ -92,3 +92,5 @@ sw.*
 .firebaserc
 
 config/firebase.config.js
+
+crient-secret.json
