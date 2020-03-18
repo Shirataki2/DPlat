@@ -6,12 +6,12 @@ deploy:
   keyfile: crient-secret.json
   project: global-snow-269714
 before_install:
+- openssl aes-256-cbc -K $encrypted_89c6bc192d4f_key -iv $encrypted_89c6bc192d4f_iv
+  -in crient-secret.json.enc -out crient-secret.json -d
 - openssl aes-256-cbc -K $encrypted_f6b53b0c07ea_key -iv $encrypted_f6b53b0c07ea_iv
   -in firebase.config.js.enc -out config/firebase.config.js -d
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
 - export PATH="$HOME/.yarn/bin:$PATH"
-- openssl aes-256-cbc -K $encrypted_89c6bc192d4f_key -iv $encrypted_89c6bc192d4f_iv
-  -in crient-secret.json.enc -out crient-secret.json -d
 install:
 - yarn --production=false
 - yarn build
