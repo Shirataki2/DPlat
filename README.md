@@ -1,4 +1,6 @@
-# D Platフロントエンドリポジトリ
+# D Plat Frontend
+
+[![Build Status](https://travis-ci.org/Shirataki2/DPlat.svg?branch=master)](https://travis-ci.org/Shirataki2/DPlat)
 
 https://deep2020.1e9plus7.com
 
