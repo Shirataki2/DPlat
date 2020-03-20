@@ -1,10 +1,15 @@
 language: node_js
 node_js:
 - 10
+branches:
+  only:
+  - master
 deploy:
   provider: gae
   keyfile: crient-secret.json
   project: global-snow-269714
+  on:
+    branch: master
 before_install:
 - openssl aes-256-cbc -K $encrypted_89c6bc192d4f_key -iv $encrypted_89c6bc192d4f_iv
   -in crient-secret.json.enc -out crient-secret.json -d
@@ -22,3 +27,4 @@ env:
   - BASE_URL=http://localhost:3000
   - API_DEV_URL=http://localhost:4000
   - API_PROD_URL=https://flask-test-dot-global-snow-269714.appspot.com
+  - NODE_ENV=production
