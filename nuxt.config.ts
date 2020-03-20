@@ -64,7 +64,7 @@ const config: Configuration = {
   },
   proxy: {
     '/api': {
-      target: process.env.API_PROD_URL || 'https://flask-test-dot-global-snow-269714.appspot.com',
+      target: 'https://flask-test-dot-global-snow-269714.appspot.com',
       pathRewrite: {
         '^/api': '/'
       }
